@@ -58,12 +58,12 @@ if(APPLE)
 		endif()
     else()
     	message(STATUS "This program supports OpenMP on Mac through Homebrew, installing Homebrew recommmended https://brew.sh")
-    endif()   
+    endif()
+else()
+# Loads settings for OpenMP and append any OpenMP compiler flags. 
+FIND_PACKAGE(OpenMP)   
 endif(APPLE)
 
-
-# Loads settings for OpenMP and append any OpenMP compiler flags. 
-FIND_PACKAGE(OpenMP)
 if(OPENMP_FOUND)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
